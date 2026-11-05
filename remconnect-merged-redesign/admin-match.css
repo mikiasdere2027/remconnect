@@ -1,0 +1,143 @@
+/* RemConnect website — admin look & feel layer.
+   Loaded after styles.css. Brings the admin console's visual language to the public site:
+   pill navigation with a dark active pill, pill buttons, soft rounded white cards on a pale page,
+   blue-gradient highlight tiles, status pills with dots, and big Manrope numbers. Content is unchanged. */
+
+:root {
+  --page: #f4f7fb;
+  --card: #ffffff;
+  --card-soft: #f3f6fb;
+  --chip: #eef3fa;
+  --shadow-sm: 0 1px 2px rgba(12, 32, 70, .04), 0 6px 18px rgba(12, 32, 70, .05);
+  --shadow-lift: 0 16px 36px rgba(12, 32, 70, .1);
+  --hero-grad: linear-gradient(160deg, #3f97ff 0%, var(--blue) 42%, var(--navy-2) 100%);
+  --radius-card: 22px;
+}
+body { background: var(--page); }
+
+/* ---------- header: floating pill groups like the admin top bar ---------- */
+@media (min-width: 761px) {
+  .site-header { height: 76px; background: color-mix(in srgb, var(--page) 88%, transparent); border-bottom: 0; }
+  .site-header .brand { height: 48px; padding: 0 18px 0 8px; border-radius: 999px; background: var(--card); box-shadow: var(--shadow-sm); }
+  .site-header .brand-mark { width: 32px; height: 32px; padding: 7px; border-radius: 50%; background: var(--navy); transform: none; gap: 2px; }
+  .primary-nav { gap: 14px; }
+  .primary-nav::before { content: ""; order: 0; }
+  .primary-nav > a { height: 48px; padding: 0 18px; border-radius: 999px; font-size: 13.5px; color: var(--muted); }
+  .primary-nav > a::after { display: none; }
+  .primary-nav > a:hover { color: var(--ink); background: var(--chip); }
+  .primary-nav > a.is-current { color: #fff; background: var(--navy); }
+  /* one white pill box around the links */
+  .nav-links-box { display: flex; align-items: center; gap: 4px; padding: 5px; border-radius: 999px; background: var(--card); box-shadow: var(--shadow-sm); }
+  .nav-links-box > a { height: 40px; padding: 0 18px; display: flex; align-items: center; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: var(--muted); transition: background .15s, color .15s; }
+  .nav-links-box > a:hover { color: var(--ink); background: var(--chip); }
+  .nav-links-box > a.is-current { color: #fff; background: var(--navy); }
+  .nav-actions { height: 48px; padding: 4px 4px 4px 18px; gap: 14px; border-radius: 999px; background: var(--card); box-shadow: var(--shadow-sm); }
+  .nav-actions .button-small { min-height: 40px; }
+}
+
+/* ---------- buttons: pills like the admin ---------- */
+.button { border-radius: 999px; }
+.button-small { border-radius: 999px; }
+.button-primary { background: linear-gradient(135deg, #318bf5, var(--blue)); box-shadow: 0 10px 22px rgba(22, 116, 232, .28); }
+.button-primary:hover { background: linear-gradient(135deg, #2a82ee, #075fc8); }
+.button-outline { border-color: var(--line); background: var(--card); box-shadow: var(--shadow-sm); }
+.button-card { border-radius: 999px; }
+.icon-link { border-radius: 50%; }
+
+/* ---------- hero note: admin card ---------- */
+.hero-note { border-radius: 18px; box-shadow: var(--shadow-lift); }
+.hero-note-icon { border-radius: 50%; }
+
+/* ---------- proof strip: admin stat tiles (first one highlighted) ---------- */
+.proof-strip { position: relative; z-index: 2; background: transparent; border-bottom: 0; margin-top: -44px; }
+.proof-grid { min-height: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.proof-divider { display: none; }
+.proof-item { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; min-height: 132px; border-radius: 20px; background: var(--card); box-shadow: var(--shadow-sm); position: relative; overflow: hidden; }
+.proof-item > div { display: flex; flex-direction: column-reverse; margin-top: auto; }
+.proof-item strong { font: 800 clamp(24px, 2.4vw, 34px)/1.05 "Manrope", sans-serif; letter-spacing: -.04em; margin-top: 4px; }
+.proof-item div span { font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.proof-icon { position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; flex: none; border-radius: 50%; background: var(--card-soft); }
+.proof-icon svg { width: 16px; height: 16px; }
+.proof-item:first-child { background: var(--hero-grad); color: #fff; }
+.proof-item:first-child div span { color: #fff; }
+.proof-item:first-child strong { color: #fff; }
+.proof-item:first-child .proof-icon { background: rgba(255, 255, 255, .18); color: #fff; }
+.proof-item:first-child::after { content: ""; position: absolute; right: -40px; top: -40px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, .25), transparent 70%); }
+.proof-note { margin: 2px 0 0; font-size: 10px; }
+
+/* ---------- sections: pale page, white cards ---------- */
+.section-roles, .section-stories, .section-needs { background: var(--page); }
+.section-method, .section-faq { background: #eaf1fa; }
+.section-team { background: var(--page); }
+
+/* ---------- role filters: chip bar like the admin ---------- */
+.role-filters { width: fit-content; max-width: 100%; gap: 2px; padding: 5px; border-radius: 999px; background: var(--card); box-shadow: var(--shadow-sm); }
+.filter-chip { min-height: 36px; border: 0; border-radius: 999px; background: none; font-weight: 600; }
+.filter-chip:hover { background: var(--chip); color: var(--ink); }
+.filter-chip.is-active { background: var(--navy); }
+.filter-chip span { border-radius: 99px; width: auto; min-width: 22px; padding: 0 6px; }
+.filter-chip:not(.is-active) span { background: var(--card-soft); color: var(--muted); }
+
+/* ---------- cards: 22px radius, soft shadow, lift on hover ---------- */
+.role-card, .step-card, .testimonial-card, .need-item { border: 0; border-radius: var(--radius-card); box-shadow: var(--shadow-sm); }
+.role-card:hover, .need-item:hover, .step-card:hover, .testimonial-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+.step-card, .testimonial-card { transition: transform .2s ease, box-shadow .2s ease; }
+.role-card-media { border-radius: var(--radius-card) var(--radius-card) 0 0; }
+.role-footer, .testimonial-person { border-top-color: var(--line); }
+.role-icon, .step-icon, .need-icon { border-radius: 50%; background: var(--surface-blue); }
+.role-card-media .role-icon { border-radius: 50%; }
+.image-badge { border-radius: 99px; padding: 6px 11px; box-shadow: 0 4px 12px rgba(0, 0, 0, .12); }
+.step-number { background: var(--navy); color: #fff; }
+
+/* level pills → admin status pills with a dot */
+.level-pill { gap: 6px; padding: 4px 10px; border-radius: 99px; font-size: 10px; }
+.level-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* ---------- story stats: mini stat tiles ---------- */
+.story-stats { gap: 10px; padding-bottom: 0; }
+.story-stats > div { padding: 12px 16px; border-left: 0; border-radius: 16px; background: var(--card); box-shadow: var(--shadow-sm); min-width: 120px; }
+.story-stats > div:first-child { background: var(--hero-grad); color: #fff; }
+.story-stats > div:first-child span { color: #d6e7ff; }
+.story-stats strong { font-size: 26px; letter-spacing: -.04em; }
+
+/* ---------- profile section: admin-style dashboard card ---------- */
+.profile-dashboard { border-radius: 24px; border: 0; box-shadow: 0 30px 70px rgba(0, 0, 0, .3); }
+.verified-pill, .live-pill { border-radius: 99px; }
+.dashboard-score, .dashboard-footer { border-radius: 14px; }
+
+/* ---------- team photo ---------- */
+.team-image-card { border-radius: var(--radius-card); }
+
+/* ---------- FAQ: each question is its own card ---------- */
+.faq-list { border-top: 0; display: grid; gap: 10px; }
+.faq-item { border-bottom: 0; padding: 0 20px; border-radius: 18px; background: var(--card); box-shadow: var(--shadow-sm); transition: box-shadow .2s ease; }
+.faq-item[open] { box-shadow: var(--shadow-lift); }
+.faq-item summary { padding: 18px 0; }
+.faq-item summary span { border: 0; background: var(--surface-blue); }
+.faq-item[open] summary span { background: var(--navy); }
+.faq-item[open] summary span::before, .faq-item[open] summary span::after { background: #fff; }
+
+/* ---------- final CTA + footer ---------- */
+.floating-note { border-radius: 18px; }
+.mobile-apply { border-radius: 999px !important; }
+.mobile-apply a { border-radius: 999px !important; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1050px) {
+  .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  /* phone menu: the pill wrapper disappears so links stack as before */
+  .nav-links-box { display: contents; }
+  .primary-nav.is-open { background: var(--card); box-shadow: 0 18px 40px rgba(12, 32, 70, .14); border-radius: 0 0 22px 22px; }
+  .primary-nav .nav-actions { background: none; box-shadow: none; }
+  .nav-links-box > a { height: auto; padding: 14px 5px; border-bottom: 1px solid #eef2f7; font-size: 14px; font-weight: 600; color: #53627a; }
+  .nav-links-box > a.is-current { color: var(--blue); }
+  .proof-strip { margin-top: -28px; }
+  .proof-grid { padding-block: 0 18px; gap: 10px; }
+  .proof-item { min-height: 112px; padding: 14px; }
+  .role-filters { width: auto; margin-right: 0; border-radius: 16px; }
+  .story-stats { flex-wrap: wrap; }
+  .story-stats > div { flex: 1; min-width: 100px; }
+  .faq-item { padding: 0 16px; }
+}

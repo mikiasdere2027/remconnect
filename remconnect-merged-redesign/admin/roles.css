@@ -1,0 +1,53 @@
+/* RemConnect Admin — Roles & requests (catalogue cards, ⋯ menus, add-role on demand) + sidebar padding */
+
+.roles-tabs { margin: -6px 0 18px; }
+.cat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: start; }
+
+.cat2 { padding: 0; overflow: visible; }
+.cat2.is-retired { opacity: .65; }
+.cat2-h { display: flex; align-items: center; gap: 12px; padding: 16px 16px 14px 18px; }
+.cat-ic { width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; flex: none; color: var(--cc); background: color-mix(in srgb, var(--cc) 12%, var(--card)); }
+.cat2-t { min-width: 0; flex: 1; }
+.cat2-t h3 { font-size: 15.5px; color: var(--text); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.cat2-t small { font-size: 12px; color: var(--muted); }
+.cat2-tools { display: flex; gap: 6px; position: relative; }
+.cat2-tools .chev .icon { transition: transform .2s; }
+.cat2.is-closed .cat2-tools .chev .icon { transform: rotate(-90deg); }
+.cat2.is-closed .cat2-body { display: none; }
+.cat2-body { padding: 0 10px 12px; display: grid; gap: 4px; border-top: 1px solid var(--line); padding-top: 10px; }
+
+.role2 { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 8px; border-radius: 14px; position: relative; transition: background .15s; }
+.role2:hover { background: var(--card-soft); }
+.role-ini { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 11px; font-weight: 800; color: var(--cc); background: color-mix(in srgb, var(--cc) 10%, var(--card)); border: 1px solid color-mix(in srgb, var(--cc) 22%, transparent); }
+.role2-t b { display: flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; color: var(--text); }
+.role2-t p { margin: 2px 0 0; font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.role2.is-retired .role-ini, .role2.is-retired .role2-t { opacity: .5; }
+.role2 .kebab { opacity: 0; transition: opacity .15s; }
+.role2:hover .kebab, .role2 .kebab:focus-visible, .role2 .kebab[aria-expanded="true"], .role2:has(.pop) .kebab { opacity: 1; }
+@media (hover: none) { .role2 .kebab { opacity: 1; } }
+
+.cat-empty { margin: 6px 8px; font-size: 12.5px; color: var(--muted); }
+.add-role { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 6px 0 0; height: 40px; border: 1.5px dashed var(--line); border-radius: 12px; background: none; color: var(--blue); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .15s, border-color .15s; }
+.add-role:hover { background: var(--surface-blue); border-color: color-mix(in srgb, var(--blue) 45%, transparent); }
+.add2 { grid-template-columns: minmax(0, 1fr); gap: 8px; margin-top: 6px; padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--card-soft); border-top: 1px solid var(--line); }
+.add2 input { background: var(--card); }
+.add2-btns { display: flex; justify-content: flex-end; gap: 8px; }
+
+/* ⋯ popover menu */
+.pop { position: absolute; top: calc(100% + 6px); right: 0; z-index: 60; min-width: 196px; padding: 6px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 18px 40px rgba(12, 32, 70, .16); animation: ddIn .14s ease; display: grid; }
+.pop button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 10px; border: 0; border-radius: 10px; background: none; color: var(--text); font: inherit; font-size: 13px; text-align: left; cursor: pointer; }
+.pop button:hover { background: var(--card-soft); }
+.pop button .icon { color: var(--muted); }
+.pop button.danger { color: #d64545; }
+.pop button.danger .icon { color: #d64545; }
+.pop button.danger:hover { background: #fff5f5; }
+[data-theme="dark"] .pop button.danger:hover { background: rgba(214, 69, 69, .14); }
+
+button.stat-tab { cursor: pointer; }
+div.stat-tab { cursor: default; }
+div.stat-tab:hover { transform: none; }
+
+@media (max-width: 1240px) { .cat-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* sidebar: a bit more breathing room under the last menu item */
+.rail .rail-group.grow { padding-top: 7px; padding-bottom: 10px; }

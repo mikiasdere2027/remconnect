@@ -1,0 +1,54 @@
+/* RemConnect Admin — custom dropdowns + card carousel arrows */
+
+/* ---------- dropdown ---------- */
+.dd-native { position: absolute !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; overflow: hidden; clip: rect(0 0 0 0); }
+.sc-select > .icon, .filter > .icon { display: none; }
+.sc-select, .filter { display: inline-flex; }
+.dd { position: relative; display: inline-flex; min-width: 0; }
+.dd-btn { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px 0 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; max-width: 280px; min-width: 0; transition: border-color .15s, box-shadow .15s, background .15s; }
+.dd-btn:hover { border-color: #c4d4ea; background: var(--card); }
+.dd-btn:focus-visible { outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(22, 116, 232, .14); }
+.dd.open .dd-btn { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(22, 116, 232, .14); }
+.dd-val { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.dd-btn .icon { width: 15px; height: 15px; flex: none; color: var(--muted); }
+.dd-chev { margin-left: auto; transition: transform .2s; }
+.dd.open .dd-chev { transform: rotate(180deg); color: var(--blue); }
+.dd-filter .dd-btn { padding: 0 16px 0 14px; }
+.dd-filter.dd-active .dd-btn { background: var(--surface-blue); border-color: #bcd4f3; color: var(--blue); }
+.dd-filter.dd-active .dd-btn .icon { color: var(--blue); }
+
+.dd-menu { position: absolute; top: calc(100% + 8px); left: 0; z-index: 120; min-width: max(100%, 190px); max-width: 320px; max-height: 380px; overflow-y: auto; margin: 0; padding: 6px; list-style: none; background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 44px rgba(12, 32, 70, .16), 0 2px 6px rgba(12, 32, 70, .06); animation: ddIn .14s ease; scrollbar-width: thin; }
+.dd-right .dd-menu { left: auto; right: 0; }
+.dd-up .dd-menu { top: auto; bottom: calc(100% + 8px); }
+@keyframes ddIn { from { opacity: 0; transform: translateY(-4px) scale(.98); } to { opacity: 1; transform: none; } }
+.dd-menu li { display: flex; align-items: center; gap: 10px; padding: 9px 12px 9px 10px; border-radius: 10px; font-size: 13px; color: var(--text); cursor: pointer; white-space: nowrap; }
+.dd-menu li span { overflow: hidden; text-overflow: ellipsis; }
+.dd-menu li .dd-check { width: 15px; height: 15px; flex: none; color: var(--blue); stroke-width: 2.4; opacity: 0; }
+.dd-menu li.hi { background: var(--card-soft); }
+.dd-menu li.sel { font-weight: 700; color: var(--blue); }
+.dd-menu li.sel .dd-check { opacity: 1; }
+.dd-menu li.dis { opacity: .45; cursor: not-allowed; }
+
+/* inside form fields: full-width, field-shaped */
+.dd-field, .fld .dd { display: flex; width: 100%; }
+.fld .dd-btn { width: 100%; max-width: none; height: 44px; border-radius: 12px; background: var(--card-soft); font-weight: 500; font-size: 13.5px; padding: 0 14px; }
+.fld .dd.open .dd-btn { background: var(--card); }
+.fld .dd-menu { min-width: 100%; max-width: none; right: 0; }
+/* compact version in role rows */
+.dd-small .dd-btn { height: 34px; border-radius: 10px; font-size: 12px; max-width: 210px; }
+
+/* ---------- card carousel arrows ---------- */
+.fc-wrap { position: relative; }
+.fc-wrap .fcards { scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; padding-bottom: 0; }
+.fc-wrap .fcards::-webkit-scrollbar { display: none; }
+.fc-arr { position: absolute; top: calc(50% - 10px); z-index: 3; width: 34px; height: 34px; border-radius: 50%; border: 0; display: grid; place-items: center; background: var(--card); color: var(--text); box-shadow: 0 6px 18px rgba(12, 32, 70, .22); cursor: pointer; transform: translateY(-50%); transition: transform .15s, background .15s; }
+.fc-arr:hover { background: var(--blue); color: #fff; }
+.fc-arr .icon { width: 16px; height: 16px; stroke-width: 2.4; }
+.fc-arr.prev { left: -10px; }
+.fc-arr.prev .icon { transform: rotate(90deg); }
+.fc-arr.next { right: -10px; }
+.fc-arr.next .icon { transform: rotate(-90deg); }
+.fc-arr[hidden] { display: none; }
+.fc-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+.fc-dots i { width: 7px; height: 7px; border-radius: 99px; background: var(--line); transition: width .2s, background .2s; }
+.fc-dots i.on { width: 20px; background: var(--blue); }

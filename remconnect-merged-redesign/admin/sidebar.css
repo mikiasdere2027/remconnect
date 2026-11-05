@@ -1,0 +1,56 @@
+/* RemConnect Admin — coloured sidebar (theme navy → blue) with sign out in its own section */
+.rail .rail-group {
+  background: linear-gradient(180deg, var(--navy-2) 0%, #1452a8 55%, var(--blue) 100%);
+  box-shadow: 0 12px 30px rgba(22, 116, 232, .22);
+}
+.rail .rail-group.toggle-group { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); }
+.rail .rail-group.signout-group { background: linear-gradient(180deg, var(--navy-2) 0%, var(--navy) 100%); }
+.rail .round { color: rgba(255, 255, 255, .78); }
+.rail .round:hover { background: rgba(255, 255, 255, .12); color: #fff; }
+.rail .round.on, [data-theme="dark"] .rail .round.on { background: #fff; color: var(--navy); box-shadow: 0 6px 16px rgba(5, 12, 28, .25); }
+.rail .rail-h { color: rgba(255, 255, 255, .55); }
+.rail .rail-sep { background: rgba(255, 255, 255, .16); }
+.rail .lbl { color: inherit; }
+.rail .theme-switch .ts-track { background: rgba(255, 255, 255, .22); }
+.rail .theme-switch.on .ts-track { background: #60a5fa; }
+.rail .rail-group.grow { scrollbar-color: rgba(255, 255, 255, .3) transparent; }
+.rail #railOut:hover { background: rgba(229, 72, 77, .22); color: #fff; }
+.rail .round[data-tip]:hover::after { background: var(--navy); box-shadow: 0 6px 16px rgba(5, 12, 28, .25); }
+
+[data-theme="dark"] .rail .rail-group { background: linear-gradient(180deg, #102a55 0%, #12397a 60%, #1557b8 100%); box-shadow: 0 12px 30px rgba(0, 0, 0, .35); }
+[data-theme="dark"] .rail .rail-group.toggle-group,
+[data-theme="dark"] .rail .rail-group.signout-group { background: linear-gradient(180deg, #0e2148 0%, #102a55 100%); }
+
+/* desktop: rail fills the screen (sign out at the bottom) and grows taller instead of scrolling inside */
+@media (min-width: 861px) {
+  .rail { height: auto; min-height: calc(100vh - 100px); max-height: none; }
+  .rail .rail-group.grow { flex: none; overflow: visible; }
+  .rail .rail-group.signout-group { margin-top: auto; }
+}
+/* phones: the rail is a bottom bar; sign out stays in the profile menu */
+@media (max-width: 860px) {
+  .rail .rail-group.signout-group { display: none; }
+  .rail .rail-group.grow { background: linear-gradient(90deg, var(--navy-2), var(--blue)); }
+}
+
+/* the theme switch uses .on for its toggle state — not the active-page highlight */
+.rail .round.theme-switch.on, [data-theme="dark"] .rail .round.theme-switch.on { background: none; color: rgba(255,255,255,.78); box-shadow: none; }
+.rail .round.theme-switch.on:hover { background: rgba(255,255,255,.12); color: #fff; }
+
+/* collapsed rail: centre every icon in its pill */
+.body-wrap:not(.rail-open) .rail .rail-group { align-items: center; }
+.body-wrap:not(.rail-open) .rail .round { display: grid; place-items: center; padding: 0; }
+.body-wrap:not(.rail-open) .rail .round .lbl,
+.body-wrap:not(.rail-open) .rail .theme-switch .ts-track { display: none; }
+.rail .theme-switch .ts-icon { display: grid; place-items: center; }
+
+/* "« Collapse sidebar" row at the very bottom */
+.rail .collapse-row { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 38px; padding: 0 12px; border: 0; border-radius: 12px; background: none; color: var(--muted); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; position: relative; flex: none; }
+.rail .collapse-row:hover { background: var(--card); color: var(--text); box-shadow: var(--shadow-sm); }
+.rail .collapse-row .cr-ic { display: grid; place-items: center; transform: rotate(180deg); transition: transform .2s; }
+.rail-open .rail .collapse-row { justify-content: flex-start; }
+.rail-open .rail .collapse-row .cr-ic { transform: none; }
+.rail .collapse-row .lbl { display: none; }
+.rail-open .rail .collapse-row .lbl { display: inline; }
+.body-wrap:not(.rail-open) .rail .collapse-row[data-tip]:hover::after { content: attr(data-tip); position: absolute; left: 50px; white-space: nowrap; background: var(--navy); color: #fff; font-size: 11.5px; font-weight: 600; padding: 4px 9px; border-radius: 7px; z-index: 40; }
+@media (max-width: 860px) { .rail .collapse-row { display: none; } }

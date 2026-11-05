@@ -1,0 +1,97 @@
+/* RemConnect website — readable text sizes.
+   Loaded last: lifts descriptions, labels, captions and footer text that were 8–12px
+   to comfortable sizes on desktop and phone. Wins over the smaller phone sizes in styles.css too. */
+
+/* top strip, hero */
+.announcement-inner { font-size: 12px; }
+.hero-description { font-size: 17px; }
+.hero-assurance, .assurance-check { font-size: 13px; }
+.hero-proof span { font-size: 13px; }
+.hero-note strong { font-size: 14px; }
+.hero-note small { font-size: 12px; }
+.eyebrow { font-size: 11.5px; }
+
+/* section intros + links */
+.section-intro { font-size: 16.5px; }
+.text-link { font-size: 14px; }
+.button-small { font-size: 13px; }
+.button-card { font-size: 13px; }
+
+/* stats strip */
+.proof-item div span { font-size: 13.5px; }
+.proof-note { font-size: 11.5px; }
+
+/* career paths */
+.filter-chip { font-size: 13.5px; }
+.filter-chip span { font-size: 11.5px; }
+.image-badge { font-size: 11.5px; }
+.role-meta { font-size: 11px; }
+.role-card h3 { font-size: 19px; }
+.role-card p { font-size: 14.5px; line-height: 1.7; }
+.level-pill { font-size: 11.5px; }
+.tag-row span { font-size: 12px; }
+
+/* how it works */
+.step-card h3 { font-size: 19px; }
+.step-card p { font-size: 15px; line-height: 1.75; }
+.step-link { font-size: 13.5px; }
+.step-number { font-size: 13px; }
+
+/* cohort card + profile dashboard (dark section) */
+.cohort-card-top strong { font-size: 14px; }
+.cohort-card-top small { font-size: 12px; }
+.live-pill { font-size: 11px; }
+.track-step strong { font-size: 12.5px; }
+.track-step small { font-size: 11px; }
+.cohort-card-foot { font-size: 12px; }
+.benefit-list small { font-size: 13.5px; }
+.profile-copy p { font-size: 16px; }
+.dashboard-kicker { font-size: 10.5px; }
+.verified-pill { font-size: 11px; }
+.dashboard-person strong { font-size: 15px; }
+.dashboard-person small { font-size: 12px; }
+.profile-tags i { font-size: 10.5px; }
+.dashboard-score div span { font-size: 11.5px; }
+.dashboard-score strong { font-size: 14px; }
+.score-row > div > span { font-size: 12px; }
+.score-row > div > strong { font-size: 13px; }
+.dashboard-footer strong { font-size: 13px; }
+.dashboard-footer small { font-size: 11px; }
+
+/* agent stories */
+.story-stats span { font-size: 12px; }
+.testimonial-card > p { font-size: 15px; line-height: 1.75; }
+.testimonial-person strong { font-size: 14px; }
+.testimonial-person div span { font-size: 12px; }
+.star-rating { font-size: 13px; }
+.disclaimer { font-size: 11.5px; }
+
+/* team + requirements */
+.team-footnote { font-size: 12.5px; }
+.image-caption small { font-size: 12px; }
+.need-item h3 { font-size: 16.5px; }
+.need-item p { font-size: 14px; line-height: 1.7; }
+
+/* FAQ */
+.faq-item summary { font-size: 15.5px; }
+.faq-answer p { font-size: 14.5px; line-height: 1.75; }
+
+/* final CTA + footer */
+.final-cta p:not(.eyebrow) { font-size: 16px; }
+.cta-footnote { font-size: 12.5px; }
+.floating-note strong { font-size: 13px; }
+.floating-note small { font-size: 11.5px; }
+.footer-top > p { font-size: 14px; }
+.footer-links strong { font-size: 13px; }
+.footer-links a { font-size: 13.5px; }
+.footer-bottom { font-size: 12px; }
+.mobile-apply, .mobile-apply a { font-size: 13px; }
+
+@media (max-width: 760px) {
+  .announcement-inner { font-size: 11px; }
+  .hero-description { font-size: 15.5px; }
+  .section-intro { font-size: 15px; }
+  .role-card p, .step-card p, .testimonial-card > p, .faq-answer p { font-size: 14px; }
+  .need-item p { font-size: 13.5px; }
+  .faq-item summary { font-size: 14.5px; }
+}

@@ -1,0 +1,57 @@
+/* RemConnect Admin — lead components + fixed app shell (header and sidebar stay put, content scrolls) */
+
+/* ---------- pipeline funnel ---------- */
+.pipe { display: grid; gap: 8px; }
+.pipe-row { display: grid; grid-template-columns: minmax(90px, 1fr) 34px 44px minmax(0, 1.6fr); align-items: center; gap: 10px; font-size: 12.5px; }
+.pipe-row .pl { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pipe-row .pv { font: 700 17px "Manrope", sans-serif; color: var(--text); text-align: right; }
+.pipe-row .pd { font-size: 11.5px; color: var(--muted); text-align: right; }
+.pipe-row .pt { display: flex; justify-content: center; }
+.pipe-row .pt i { display: grid; place-items: center; height: 34px; font-style: normal; font-size: 11.5px; font-weight: 700; clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 10px 100%); border-radius: 6px; transition: width .5s ease; }
+
+/* ---------- status bubbles ---------- */
+.bub { position: relative; height: 230px; border-radius: 16px; background: var(--card-soft); overflow: hidden; }
+.bb { position: absolute; width: var(--s); height: var(--s); transform: translate(-50%, -50%); border-radius: 50%; background: var(--c); display: grid; place-items: center; color: #fff; box-shadow: 0 10px 24px color-mix(in srgb, var(--c) 35%, transparent); }
+.bb b { font: 800 20px "Manrope", sans-serif; }
+.bb.empty { background: color-mix(in srgb, var(--c) 16%, var(--card)); color: var(--c); box-shadow: none; border: 2px dashed color-mix(in srgb, var(--c) 45%, transparent); }
+.bb .bl { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; background: var(--card); color: var(--text); font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 99px; box-shadow: 0 4px 12px rgba(12, 32, 70, .12); }
+.bb .bl i { width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+
+/* ---------- day heatmap ---------- */
+.hm { display: grid; gap: 8px; }
+.hm-days, .hm-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.hm-days span { text-align: center; font-size: 11px; color: var(--muted); font-weight: 600; }
+.hm-grid i { aspect-ratio: 2.4 / 1; border-radius: 8px; background: var(--card-soft); }
+.hm-grid i.pad { background: transparent; }
+.hm-grid i.l0, .hm-key i.l0 { background: color-mix(in srgb, var(--blue) 8%, var(--card)); }
+.hm-grid i.l1, .hm-key i.l1 { background: color-mix(in srgb, var(--blue) 25%, var(--card)); }
+.hm-grid i.l2, .hm-key i.l2 { background: color-mix(in srgb, var(--blue) 45%, var(--card)); }
+.hm-grid i.l3, .hm-key i.l3 { background: color-mix(in srgb, var(--blue) 70%, var(--card)); }
+.hm-grid i.l4, .hm-key i.l4 { background: var(--blue); }
+.hm-key { display: flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 11px; color: var(--muted); }
+.hm-key i { width: 14px; height: 14px; border-radius: 4px; }
+
+/* ---------- insight strip ---------- */
+.insight { display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 10px 14px; border-radius: 14px; background: var(--card-soft); }
+.insight .in-ic { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; background: var(--navy); color: #fff; flex: none; }
+[data-theme="dark"] .insight .in-ic { background: var(--blue); }
+.insight p { margin: 0; font-size: 13px; color: var(--text); }
+.insight p b { font-weight: 700; }
+
+/* ---------- fixed app shell: only the content panel scrolls (desktop) ---------- */
+@media (min-width: 861px) {
+  html, body.dash { height: 100%; overflow: hidden; }
+  body.dash .frame { height: 100vh; min-height: 0; display: flex; flex-direction: column; padding-bottom: 0; }
+  .topbar { flex: none; }
+  .body-wrap { flex: 1; min-height: 0; }
+  .rail { position: relative; top: auto; height: 100%; min-height: 0; max-height: none; padding-bottom: 16px; }
+  /* open sidebar: if a short screen can't fit it, it scrolls inside without a visible bar */
+  .rail-open .rail { overflow-y: auto; scrollbar-width: none; }
+  .rail-open .rail::-webkit-scrollbar { display: none; }
+  #content { height: 100%; overflow-y: auto; overscroll-behavior: contain; padding: 0 8px 28px 2px; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--muted) 45%, transparent) transparent; }
+  #content::-webkit-scrollbar { width: 8px; }
+  #content::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--muted) 40%, transparent); border-radius: 99px; }
+}
+@media (max-width: 860px) {
+  .pipe-row { grid-template-columns: minmax(80px, 1fr) 28px 40px minmax(0, 1.2fr); }
+}
